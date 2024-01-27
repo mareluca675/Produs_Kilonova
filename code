@@ -1,0 +1,50 @@
+#include <fstream>
+#include <cmath>
+
+using namespace std;
+
+char vec[4000001];
+
+int main()
+{
+    ifstream cin("produs.in");
+    ofstream cout("produs.out");
+    
+    long long n, m, i, j;
+    
+    cin >> n;
+    
+    for(i = 2; i <= 4000001; i ++)
+    {
+        if(vec[i] == 0)
+        {
+            for(j = 1; i * j <= 4000001; j ++)
+            {
+                vec[i * j] ++;
+            }
+        }
+    }
+    
+    for(i = 1; i <= n; i ++)
+    {
+        cin >> m;
+        
+        if(m == 1)
+        {
+            cout << 0 << '\n';
+        }
+        else 
+        {
+            int sol = 1;
+            
+            for(j = 1; j <= vec[m]; j ++)
+            {
+                sol *= 2;
+            }
+            
+            cout << sol << '\n';
+        }
+    }
+    
+    return 0;
+}
